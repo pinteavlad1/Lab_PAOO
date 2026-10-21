@@ -18,13 +18,14 @@ int main() {
     cout << "Sunt obiecte distince\n\n";
 
     //Exemplu eficienta move constructor
-    Dsu dsuMare = Dsu(1000000);
 
     auto begin = chrono::high_resolution_clock::now();
 
+    Dsu dsuMare = Dsu(1000000);
+
     auto end = chrono::high_resolution_clock::now();    
-    auto duration = chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
-    cout << "Timp: " << duration << " [ns]\n";
+    auto duration = chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+    cout << "Timp: " << duration << " [ms]\n";
 
     //Destructor se apeleaza singur la final de main
     return 0;

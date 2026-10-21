@@ -36,7 +36,8 @@ Dsu::Dsu(const Dsu& other) : N(other.N) {
 //Folosim std::move
 #ifndef NO_MOVE_CONSTRUCTOR
 Dsu::Dsu(Dsu&& other) noexcept : N(other.N), nodes(move(other.nodes)) {
-    cout << "Move constructor called\n";
+    //Cout slows down code
+    //cout << "Move constructor called\n";
 }
 #endif
 

@@ -1,5 +1,6 @@
 #include "Dsu.hpp"
 #include <iostream>
+#include <utility>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ Dsu::~Dsu() {
 #ifndef NO_COPY_CONSTRUCTOR
 Dsu::Dsu(const Dsu& other) : N(other.N) {
     cout << "Copy constructor called\n";
+    nodes.reserve(other.nodes.size());
     for (Node* node : other.nodes) {
         nodes.push_back(new Node{node->parentIndex, node->rank});
     }
@@ -35,9 +37,11 @@ Dsu::Dsu(const Dsu& other) : N(other.N) {
 //Valorile(adresele) din vectorul obiectului temporar sunt mutate in vectorul nodes
 //Folosim std::move
 #ifndef NO_MOVE_CONSTRUCTOR
-Dsu::Dsu(Dsu&& other) noexcept : N(other.N), nodes(move(other.nodes)) {
+Dsu::Dsu(Dsu&& other) noexcept : nodes(move(other.nodes)), N(other.N) {
     //Cout slows down code
     //cout << "Move constructor called\n";
+    other.nodes.clear();
+    other.N = 0;
 }
 #endif
 

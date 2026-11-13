@@ -19,9 +19,11 @@ int main() {
 
     //Exemplu eficienta move constructor
 
+    Dsu dsuTemp(1000000);
+
     auto begin = chrono::high_resolution_clock::now();
 
-    Dsu dsuMare = Dsu(1000000);
+    Dsu dsuMare = move(dsuTemp);
 
     auto end = chrono::high_resolution_clock::now();    
     auto duration = chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();

@@ -1,8 +1,6 @@
 #pragma once
 #include <vector>
 
-using namespace std;
-
 
 class Dsu {
     private:
@@ -10,7 +8,7 @@ class Dsu {
             int parentIndex;
             int rank;
         };
-        vector<Node*> nodes;
+        std::vector<Node*> nodes;
         int N;
     public:
         Dsu(int n);
